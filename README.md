@@ -10,10 +10,12 @@ An unofficial CJK companion to Chakra Petch: Han glyphs with straightened curves
 
 | 家族 Family | 字重 Weights | 说明 |
 |---|---|---|
-| Chakra Petch SC | Regular, Bold | 比例字体，约 3.1 万字形（简繁汉字、假名、全角标点） |
-| Chakra Petch SC Mono | Regular, Bold | 等宽，半角 550 / 全角 1100（2:1 对齐）；斜线 0、可区分的 I / l、折角圆括号、无连字 |
+| Chakra Petch SC | Regular, SemiBold, Bold | 比例字体，约 3.1 万字形（简繁汉字、假名、全角标点） |
+| Chakra Petch SC Mono | Regular, SemiBold, Bold | 等宽，半角 550 / 全角 1100（2:1 对齐）；斜线 0、可区分的 I / l、折角圆括号、无连字 |
 
 下载 [`fonts/`](fonts/) 里的 `.ttf` 双击安装。VS Code：
+
+SemiBold 在字体列表里显示为独立家族 `Chakra Petch 中文 SemiBold` / `Chakra Petch SC SemiBold`，方便不支持字重选择的软件直接选用。
 
 ```json
 "editor.fontFamily": "'Chakra Petch SC Mono'"
