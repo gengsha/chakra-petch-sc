@@ -173,7 +173,11 @@ name = f['name']
 name.names = [n for n in name.names if n.nameID not in (1, 2, 3, 4, 6, 16, 17)]
 def setn(i, s):
     name.setName(s, i, 3, 1, 0x409); name.setName(s, i, 1, 0, 0)
-setn(1, fam); setn(2, STYLE); setn(3, f'{fam} {STYLE};2026'); setn(4, f'{fam} {STYLE}')
+RIBBI = STYLE in ('Regular', 'Bold'); zh = 'Chakra Petch 中文等宽'
+setn(1, fam if RIBBI else f'{fam} {STYLE}'); setn(2, STYLE if RIBBI else 'Regular')
+setn(3, f'{fam} {STYLE};2026'); setn(4, f'{fam} {STYLE}')
 setn(6, (fam + '-' + STYLE).replace(' ', ''))
-name.setName('Chakra Petch 中文等宽', 1, 3, 1, 0x804); name.setName(STYLE, 2, 3, 1, 0x804)
+name.setName(zh if RIBBI else f'{zh} {STYLE}', 1, 3, 1, 0x804); name.setName(STYLE if RIBBI else 'Regular', 2, 3, 1, 0x804)
+if not RIBBI:
+    setn(16, fam); setn(17, STYLE); name.setName(zh, 16, 3, 1, 0x804); name.setName(STYLE, 17, 3, 1, 0x804)
 f.save(OUT); print('saved', OUT)
