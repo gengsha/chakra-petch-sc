@@ -228,13 +228,15 @@ name.names = [n for n in name.names if n.nameID not in (1, 2, 3, 4, 6, 7, 16, 17
 def setn(i, s):
     name.setName(s, i, 3, 1, 0x409); name.setName(s, i, 1, 0, 0)
 setn(0, 'Copyright 2018 The Chakra Petch Project Authors (https://github.com/m4rc1e/Chakra-Petch.git). Han glyphs derived from Noto Sans SC, (c) 2014-2021 Adobe, with Reserved Font Name \'Source\'. Modified 2026.')
-setn(1, fam); setn(2, STYLE if STYLE in ('Regular', 'Bold') else 'Regular')
+RIBBI = STYLE in ('Regular', 'Bold')
+zh = 'Chakra Petch 中文'
+setn(1, fam if RIBBI else f'{fam} {STYLE}'); setn(2, STYLE if RIBBI else 'Regular')
 setn(3, f'{fam} {STYLE};2026'); setn(4, f'{fam} {STYLE}'); setn(6, (fam+'-'+STYLE).replace(' ', ''))
 setn(5, 'Version 1.000')
-if STYLE not in ('Regular', 'Bold'):
+name.setName(zh if RIBBI else f'{zh} {STYLE}', 1, 3, 1, 0x804)
+name.setName(STYLE if RIBBI else 'Regular', 2, 3, 1, 0x804)
+if not RIBBI:
     setn(16, fam); setn(17, STYLE)
-# family name in Chinese
-name.setName('Chakra Petch 中文', 1, 3, 1, 0x804)
-name.setName(STYLE, 2, 3, 1, 0x804)
+    name.setName(zh, 16, 3, 1, 0x804); name.setName(STYLE, 17, 3, 1, 0x804)
 f.save(OUT)
 print('saved', OUT)
